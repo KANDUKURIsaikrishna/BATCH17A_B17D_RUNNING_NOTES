@@ -982,4 +982,103 @@ EXPOSE 8080
 docker build -t pythonimg:v1 -f Dockerfile .
 docker tag 94b3631fb8d0 devopshubg333/batch17d:pythonimg_v1
 
+==============================================================================================
+
+
+date: 8 MAY 2026 
+
+
+-----------------------------------------------
+
+All these days amazonlinux 
+
+use other images  like ubuntu, centos ...etc 
+
+export PS1='\u@\h# '
+
+
+docker run -it -h <hostname>  iname 
+
+-----------------------------------------------
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean
+
+COPY app.py /opt/python_app/app.py
+
+RUN pip3 install flask --break-system-packages
+
+EXPOSE 8080
+
+CMD flask --app /opt/python_app/app.py run --host=0.0.0.0 --port=8080
+
+======================
+# use base image python 
+FROM python:3.12-slim
+
+LABEL maintainer="Madhukiran <madhu@gmail.com>"
+
+WORKDIR /opt/python_app
+
+COPY app.py .
+
+RUN pip install flask
+
+EXPOSE 8080
+
+CMD ["flask", "--app", "app.py", "run", "--host=0.0.0.0", "--port=8080"]
+
+
+----------------------------------------------
+
+DOCKERFILE DEEP DIVE: 
+
+FROM
+RUN
+COPY
+CMD
+EXPOSE 
+LABEL
+ADD 
+WORKDIR 
+ADD 
+COPY VS ADD 
+----------
+
+ENTRYPOINT 
+CMD VS ENTRYPOINT 
+
+===========
+Dockerfile Instructions Simplified
+
+RUN
+
+    Executes commands while building the image.    
+    Creates a new image layer.    
+    Commonly used to install software packages
+	it is basically during Image Building
+
+CMD
+    DURING CONTAINER CREATIING  -
+    Sets the default command when the container starts.    
+    Can be overridden by arguments passed to docker run.    
+
+
+ENTRYPOINT
+      DURING CONTAINER CREATIING  -
+      Configures the container to run as an executable.      
+      Cannot be fully overridden, but command-line arguments are appended.
+	  GIven High priority 
+
+=====================
+
+
+
+======================================= 
+docker system prune 
+docker container prune 
+docker image prune 
+docker volume prune  
 
