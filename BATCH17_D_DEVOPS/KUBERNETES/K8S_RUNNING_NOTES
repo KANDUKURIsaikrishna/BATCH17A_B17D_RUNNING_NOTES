@@ -589,3 +589,127 @@ Here’s the order AWS generally follows 👇
             Remaining bill calculated
             AWS promotional credits applied next
             Your card charged only if bill still remains
+
+
+
+=================================================================
+
+
+29 MAY 2026 
+
+DISCUSSED :
+✅ Pod and its lifecycle/status
+✅ ImagePullBackOff error – causes and troubleshooting
+✅ CrashLoopBackOff error – causes and troubleshooting
+✅ Pod in Pending state – reasons and debugging
+✅ Pod creation using Manifest YAML files
+
+
+yaml - one of the data structure format to represent data 
+       yaml file is used to represent data , in our case k8s object configuration data
+
+for ex : 
+server Info : 
+name = insta 
+created = 29-05-2026 
+status = active 
+owner = Madhu
+
+
+
+
+server details :
+
+
+name = insta
+created = 29-05-2026
+status = active 
+owner = Madhu
+
+name = whatsapp
+owner = kiran
+created = 29-05-2026
+status = active 
+
+
+====================
+
+--- show above server data as xml , yaml and json format 
+
+-----------------------------------
+key value pair - 
+
+name: server1
+
+-------------------
+Array/ List :
+
+Fruits:
+- grape   
+- banana
+- Orange: 
+    Carbs: 5g   
+	Fat: 0.1 g
+	Calories: 50
+
+
+  
+- apple
+    Fat: 0.1 g
+    Carbs: 5g
+    Calories: 50
+    
+    
+-------------------
+
+Dictionary - Set of properties , grouped together
+
+Orange: 
+   Calories: 50
+   Fat: 0.1 g
+   Carbs: 5 g
+   
+   
+make sure we are giving spaces properly 
+ - equal no of spaces   
+----------------------------------------
+
+
+INSTALL VSCODE --> INSTALL YAML EXTENSION --> GO TO SCHEMA: SETTING.json
+
+=================
+
+
+    "yaml.schemas": {    
+
+        "kubernetes": "*.yaml" 
+        
+    },
+
+==========================================================
+
+cat pod1.yaml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: insta-pod
+  labels:
+    app: insta
+    env: production
+
+spec:
+  containers:
+  - name: insta-container
+    image: tomcat 
+
+============================================================
+kubectl apply -f pod1.yaml
+
+
+
+
+
+
+
