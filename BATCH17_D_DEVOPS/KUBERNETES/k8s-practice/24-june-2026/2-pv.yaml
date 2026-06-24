@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fb-pv
+spec:
+  accessModes:
+  - ReadWriteOnce  ## Only one node (machine) can read and write to this volume at a time.
+  capacity:
+    storage: 20Gi
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    volumeHandle: vol-04d9ab79a344615f7
+
+
+
+
